@@ -5,7 +5,7 @@ on: [push]
 env:
   FLATPAK_ID: com.jetbrains.CLion
   FP_BUNDLE: clion-${{ github.run_id }}.flatpak
-  FP_BRANCH: stable
+  FP_BRANCH: master
   FP_BUILD_NAME: clion-flatpak
   FP_BUILD_DIR: build-dir
   FP_BUILD_REPO: build-repo
