@@ -1,5 +1,5 @@
 id: com.jetbrains.CLion
-runtime: org.freedesktop.Platform
+runtime: org.freedesktop.Sdk
 runtime-version: "19.08"
 sdk: org.freedesktop.Sdk
 command: clion
@@ -16,14 +16,6 @@ finish-args:
   - --talk-name=org.freedesktop.Flatpak
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
-add-extensions:
-  org.freedesktop.Sdk.Extension.rust-stable:
-    subdirectories: true
-    directory: bin
-    add-ld-path: lib
-    merge-dirs: etc;lib/rustlib;share;
-    no-autodownload: true
-    autodelete: true
 modules:
   - name: clion
     buildsystem: simple
