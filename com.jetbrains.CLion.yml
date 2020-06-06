@@ -1,0 +1,65 @@
+id: com.jetbrains.CLion
+runtime: org.freedesktop.Platform
+runtime-version: "19.08"
+sdk: org.freedesktop.Sdk
+command: clion
+tags:
+  - proprietary
+finish-args:
+  - --device=dri
+  - --filesystem=host
+  - --filesystem=xdg-run/keyring
+  - --share=ipc
+  - --share=network
+  - --socket=ssh-auth
+  - --socket=x11
+  - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+add-extensions:
+  org.freedesktop.Sdk.Extension.rust-stable:
+    subdirectories: true
+    directory: bin
+    add-ld-path: lib
+    merge-dirs: etc;lib/rustlib;share;
+    no-autodownload: true
+    autodelete: true
+modules:
+  - name: clion
+    buildsystem: simple
+    build-commands:
+      - install -m 0755 entrypoint.sh /app/bin/clion
+      - install -m 0755 -d /app/clion
+      - unzip clion_logos.zip
+      - cp -r clion/* /app/clion/
+      - install -m 0644 -Dp icon_CLion.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -m 0644 -Dp ${FLATPAK_ID}.appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml
+      - install -m 0644 -Dp ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+    sources:
+      - type: archive
+        dest: clion
+        url: https://download.jetbrains.com/cpp/CLion-2020.1.2.tar.gz
+        sha256: c7d52c5059883c71d3db1271e82f513d0a3d1054efb69cd7d1f3e99ac1b2ab60
+      - type: file
+        url: https://resources.jetbrains.com/storage/products/clion/docs/clion_logos.zip
+        sha256: a3b4d3dd984fdcc72e8cc576202dfbe1c471d8a02a05494c2eb3bb0c35f3761c
+      - type: file
+        path: com.jetbrains.CLion.appdata.xml
+      - type: file
+        path: com.jetbrains.CLion.desktop
+      - type: script
+        dest-filename: entrypoint.sh
+        commands:
+          - exec env /app/clion/bin/clion.sh "$@"
+    modules:
+      - shared-modules/libsecret/libsecret.json
+      - name: git
+        buildsystem: simple
+        build-commands:
+          - install -Dm0755 $(which git) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-clang-format) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-cvsserver) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-receive-pack) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-shell) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-upload-archive) ${FLATPAK_DEST}/bin/
+          - install -Dm0755 $(which git-upload-pack) ${FLATPAK_DEST}/bin

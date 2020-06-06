@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.jetbrains.CLion</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <name>CLion</name>
+  <summary>Cross-platform IDE for C/C++</summary>
+  <description>
+    <p>
+      The CLion is a cross-platform C/C++ IDE.
+      CLion includes such features as a smart editor, code generation, code quality assurance,
+      automated refactorings, on-the-fly code analysis, project manager,
+      integrated version control systems and debugger.
+    </p>
+    <p>NOTE: This wrapper is not verified by, affiliated with, or supported by JetBrains s.r.o.</p>
+  </description>
+  <launchable type="desktop-id">com.jetbrains.CLion.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.jetbrains.com/clion/img/screens/overview__change_signature.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.jetbrains.com/clion/img/screens/overview__debug.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://youtrack.jetbrains.com/issues/CPP/</url>
+  <url type="help">https://www.jetbrains.com/clion/learning-center/</url>
+  <url type="homepage">https://www.jetbrains.com/clion/</url>
+  <developer_name>JetBrains s.r.o.</developer_name>
+  <update_contact>community-support@jetbrains.com</update_contact>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="2020.1.2" date="2020-06-03"/>
+  </releases>
+</component>
