@@ -3,6 +3,7 @@ runtime: org.freedesktop.Sdk
 runtime-version: "19.08"
 sdk: org.freedesktop.Sdk
 command: clion
+separate-locales: false
 tags:
   - proprietary
 finish-args:
