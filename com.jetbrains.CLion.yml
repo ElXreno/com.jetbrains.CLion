@@ -22,19 +22,16 @@ modules:
     buildsystem: simple
     build-commands:
       - install -m 0755 entrypoint.sh /app/bin/clion
-      - install -m 0755 apply_extra.sh /app/bin/apply_extra
       - unzip clion_logos.zip
+      - mv clion /app/clion
       - install -m 0644 -Dp icon_CLion.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -m 0644 -Dp ${FLATPAK_ID}.appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml
       - install -m 0644 -Dp ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
     sources:
-      - type: extra-data
-        filename: clion.tar.gz
-        only-arches:
-          - x86_64
-        url: https://download.jetbrains.com/cpp/CLion-2020.3.tar.gz
-        sha256: ffc862511bf80debb80f9d60d2999b02e32b7c3cbb8ac25a4c0efc5b9850124f
-        size: 631168831
+      - type: archive
+        dest: clion
+        url: https://download.jetbrains.com/cpp/CLion-2020.2.4.tar.gz
+        sha256: 4301a1572908592e25fd9234c290eabcd44e53b23ababd7ed518a93728527976
         x-checker-data:
           type: jetbrains
           code: CL
@@ -53,14 +50,6 @@ modules:
         dest-filename: entrypoint.sh
         commands:
           - exec env TMPDIR=${XDG_CACHE_HOME}/tmp/ CLION_VM_OPTIONS=/app/clion/bin/clion64.vmoptions /app/clion/bin/clion.sh "$@"
-
-      - type: script
-        dest-filename: apply_extra.sh
-        commands:
-          - install -m 0755 -d clion
-          - tar -C clion -xf clion.tar.gz --strip-components=1
-          - rm -f clion.tar.gz
-
     modules:
       - shared-modules/libsecret/libsecret.json
 
