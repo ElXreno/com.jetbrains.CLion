@@ -33,8 +33,11 @@ modules:
         only-arches:
           - x86_64
         url: https://download.jetbrains.com/cpp/CLion-2020.1.2.tar.gz
-        size: 509953307
         sha256: c7d52c5059883c71d3db1271e82f513d0a3d1054efb69cd7d1f3e99ac1b2ab60
+        size: 509953307
+        x-checker-data:
+          type: jetbrains
+          code: CL
 
       - type: file
         url: https://resources.jetbrains.com/storage/products/clion/docs/clion_logos.zip
