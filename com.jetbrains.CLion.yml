@@ -52,7 +52,7 @@ modules:
       - type: script
         dest-filename: entrypoint.sh
         commands:
-          - exec env TMPDIR=${XDG_CACHE_HOME}/tmp/ CLION_VM_OPTIONS=/app/extra/clion/bin/clion64.vmoptions /app/extra/clion/bin/clion.sh "$@"
+          - exec env TMPDIR=${XDG_CACHE_HOME}/tmp/ CLION_VM_OPTIONS=/app/clion/bin/clion64.vmoptions /app/clion/bin/clion.sh "$@"
 
       - type: script
         dest-filename: apply_extra.sh
