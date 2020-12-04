@@ -32,9 +32,9 @@ modules:
         filename: clion.tar.gz
         only-arches:
           - x86_64
-        url: https://download.jetbrains.com/cpp/CLion-2020.2.4.tar.gz
-        sha256: 4301a1572908592e25fd9234c290eabcd44e53b23ababd7ed518a93728527976
-        size: 554105965
+        url: https://download.jetbrains.com/cpp/CLion-2020.3.tar.gz
+        sha256: ffc862511bf80debb80f9d60d2999b02e32b7c3cbb8ac25a4c0efc5b9850124f
+        size: 631168831
         x-checker-data:
           type: jetbrains
           code: CL
